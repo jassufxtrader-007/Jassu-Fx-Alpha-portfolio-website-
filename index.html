@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading with Jassim | Elite Forex Signals & Analysis</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #050811;
+            --bg-card: rgba(18, 24, 38, 0.7);
+            --border-glow: rgba(245, 176, 0, 0.25);
+            --primary-gold: #f5b000;
+            --gold-glow: #ffc83b;
+            --primary-green: #00e676;
+            --text-white: #ffffff;
+            --text-gray: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(245, 176, 0, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 230, 118, 0.05) 0%, transparent 40%);
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Buttons & Badges */
+        .btn-gold {
+            background: linear-gradient(135deg, #f5b000 0%, #ff8c00 100%);
+            color: #000;
+            padding: 16px 32px;
+            font-weight: 800;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 25px rgba(245, 176, 0, 0.4);
+            letter-spacing: 0.5px;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 35px rgba(245, 176, 0, 0.7);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-gold);
+            padding: 14px 30px;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-gold);
+            color: #000;
+            box-shadow: 0 0 20px rgba(245, 176, 0, 0.4);
+        }
+
+        .live-badge {
+            background: rgba(0, 230, 118, 0.15);
+            border: 1px solid var(--primary-green);
+            color: var(--primary-green);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary-green);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 15px var(--primary-green); }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            color: var(--primary-gold);
+            text-shadow: 0 0 15px rgba(245, 176, 0, 0.3);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .glass-card:hover {
+            border-color: var(--primary-gold);
+            box-shadow: 0 10px 30px rgba(245, 176, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(5, 8, 17, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 18px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-white);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--primary-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #fff 30%, var(--primary-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 2.8rem;
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(245, 176, 0, 0.4));
+        }
+
+        .feature-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 80px 0;
+            background: rgba(18, 24, 38, 0.4);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item h2 {
+            font-size: 3.2rem;
+            color: var(--primary-gold);
+            font-weight: 800;
+            text-shadow: 0 0 20px rgba(245, 176, 0, 0.3);
+        }
+
+        .stat-item p {
+            color: var(--text-gray);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        /* Chart Section */
+        .chart-section {
+            padding: 100px 0;
+        }
+
+        .chart-container {
+            height: 520px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .price-card {
+            padding: 45px 35px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .price-card.popular {
+            border: 2px solid var(--primary-gold);
+            box-shadow: 0 0 35px rgba(245, 176, 0, 0.25);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -16px;
+            right: 30px;
+            background: linear-gradient(135deg, #f5b000, #ff8c00);
+            color: #000;
+            padding: 6px 18px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price-header h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        .price-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-gold);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+        }
+
+        .price-amount span {
+            font-size: 1rem;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        .price-features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .price-features li {
+            margin-bottom: 15px;
+            color: var(--text-gray);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+        }
+
+        .price-features li i {
+            color: var(--primary-green);
+            font-size: 1.1rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background: rgba(18, 24, 38, 0.3);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            padding: 30px;
+        }
+
+        .stars {
+            color: var(--primary-gold);
+            margin-bottom: 15px;
+        }
+
+        .review-card p {
+            color: var(--text-gray);
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-gold), #ff8c00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: 800;
+        }
+
+        .user-details h4 {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .user-details span {
+            font-size: 0.8rem;
+            color: var(--primary-green);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 30px;
+            background: #02040a;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .disclaimer {
+            font-size: 0.8rem;
+            color: #475569;
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.4rem; }
+            .nav-links { display: none; }
+            .hero-btns { flex-direction: column; }
+            .btn-gold, .btn-outline { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">Trading With <span>Jassim</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Why Us</a></li>
+                <li><a href="#chart">Live Chart</a></li>
+                <li><a href="#pricing">VIP Plans</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+            </ul>
+            <a href="https://t.me/itx_londa_01" target="_blank" class="btn-gold"><i class="fa-brands fa-telegram"></i> Join Telegram</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="live-badge">
+                <div class="live-dot"></div> VIP Signals Active Today: +450 Pips Secured
+            </div>
+            <h1>Master Forex Trading With <span>Precision & Institutional Analysis</span></h1>
+            <p>Join 5,000+ traders maximizing profits with daily high-accuracy XAUUSD & Forex signals, strict risk setups, and live market breakdowns.</p>
+            <div class="hero-btns">
+                <a href="https://t.me/itx_londa_01" target="_blank" class="btn-gold"><i class="fa-brands fa-telegram"></i> Join Free Telegram Channel</a>
+                <a href="#pricing" class="btn-outline">Explore VIP Access</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ticker Bar -->
+    <div class="ticker-wrap">
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+            {
+            "symbols": [
+                {"proName": "FOREXCOM:SPXUSD", "title": "S&P 500"},
+                {"proName": "FOREXCOM:NSXUSD", "title": "US Tech 100"},
+                {"fxProName": "FX_IDC:EURUSD", "title": "EUR/USD"},
+                {"proName": "BITSTAMP:BTCUSD", "title": "Bitcoin"},
+                {"proName": "FX:GBPUSD", "title": "GBP/USD"},
+                {"proName": "OANDA:XAUUSD", "title": "Gold (XAU/USD)"}
+            ],
+            "showSymbolLogo": true,
+            "colorTheme": "dark",
+            "isTransparent": true,
+            "displayMode": "adaptive",
+            "locale": "en"
+            }
+            </script>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose <span>Trading With Jassim?</span></h2>
+            <p class="section-subtitle">Institutional grade technical analysis designed to deliver consistent results.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card glass-card">
+                    <div class="feature-icon"><i class="fa-solid fa-bullseye"></i></div>
+                    <h3>85%+ Signal Accuracy</h3>
+                    <p>Calculated trade setups featuring clear Entry Price, Stop Loss, and up to 3 Take-Profit targets.</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                    <h3>Smart Money Concepts</h3>
+                    <p>Deep price action & Order Block analysis to enter trades alongside institutional liquidity.</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Capital Protection</h3>
+                    <p>Professional 1:2+ Risk-to-Reward ratio setup on every trade call to safeguard your account.</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+                    <h3>1-on-1 Mentorship</h3>
+                    <p>Direct priority support via Telegram to analyze custom charts and answer technical questions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h2>5,000+</h2>
+                    <p>Active Traders</p>
+                </div>
+                <div class="stat-item">
+                    <h2>85%+</h2>
+                    <p>Win Rate</p>
+                </div>
+                <div class="stat-item">
+                    <h2>12,500+</h2>
+                    <p>Monthly Pips</p>
+                </div>
+                <div class="stat-item">
+                    <h2>5+ Years</h2>
+                    <p>Market Mastery</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Chart Section -->
+    <section class="chart-section" id="chart">
+        <div class="container">
+            <h2 class="section-title">Live Market <span>Technical Overview</span></h2>
+            <p class="section-subtitle">Real-time TradingView charting for Gold (XAUUSD) & Major Forex Pairs.</p>
+            <div class="chart-container glass-card">
+                <div class="tradingview-widget-container" style="height:100%;width:100%">
+                    <div id="tradingview_chart" style="height:100%;width:100%"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                    <script type="text/javascript">
+                    new TradingView.widget(
+                    {
+                    "autosize": true,
+                    "symbol": "OANDA:XAUUSD",
+                    "interval": "60",
+                    "timezone": "Etc/UTC",
+                    "theme": "dark",
+                    "style": "1",
+                    "locale": "en",
+                    "enable_publishing": false,
+                    "hide_side_toolbar": false,
+                    "allow_symbol_change": true,
+                    "container_id": "tradingview_chart"
+                    }
+                    );
+                    </script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Select Your <span>VIP Plan</span></h2>
+            <p class="section-subtitle">Gain instant access to premium Forex & Gold signals right now.</p>
+
+            <div class="pricing-grid">
+                <!-- Free Plan -->
+                <div class="price-card glass-card">
+                    <div class="price-header">
+                        <h3>Free Telegram</h3>
+                        <div class="price-amount">$0 <span>/ Forever</span></div>
+                    </div>
+                    <ul class="price-features">
+                        <li><i class="fa-solid fa-check"></i> 1-2 Free Signals Daily</li>
+                        <li><i class="fa-solid fa-check"></i> Basic Market Overviews</li>
+                        <li><i class="fa-solid fa-check"></i> Weekly Video Recaps</li>
